@@ -1,0 +1,167 @@
+body {
+	background-image: url(../../images/background.png);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100%;
+	position: relative;
+}
+
+nav {
+	height: 30px;
+}
+
+/*\\\ PAGE HOME \\\*/
+
+#title {
+	font-family: 'Lora', serif;
+	font-size: 40px;
+	margin-bottom: 40px;
+}
+
+.slider{
+	margin-bottom: 40px;
+}
+
+.slides {
+	background-image: url(../../images/book.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	border-radius: 10px;
+	font-family: 'Quattrocento', serif;
+}
+
+.slides h5 {
+	font-style: italic;
+}
+
+.collapsible {
+	background-color: #efebe9;
+}
+
+.collapsible-header {
+	position: relative;
+}
+
+.titleChapitre{
+	font-size: 20px;
+}
+
+.nbrComment {
+	position: absolute;
+	right: 0px;
+}
+
+.collapsible-body {
+	position: relative;
+}
+
+.date {
+	position: absolute;
+	right: 50px;
+	top: 20px;
+}
+
+/*\\\ BUTTON INFO \\\*/
+
+.info p {
+	line-height: 20px;
+	margin-right: 20px;
+}
+
+#author {
+	width: 100%;
+}
+
+#slide-out h3, #slide-out p  {
+	margin-left: 30px;
+}
+
+/*\\\ PAGE CHAPITRE \\\*/
+
+.buttonHome{
+	bottom: 90px;
+}
+
+.paragraph {
+	margin-bottom: 50px;
+	font-family: 'Libre Baskerville', serif;
+	text-align: justify;
+}
+
+.text, .comments {
+	background-color: white;
+	border-radius: 10px;
+	padding: 40px 80px 40px 80px;
+}
+
+.comments h4{
+	margin-bottom: 40px;
+	padding-left: 20px;
+}
+
+.userComment {
+	position: relative;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.dateComment {
+	position: absolute;
+	right: 20px;
+	top: 10px;
+}
+
+.warning {
+	position: absolute;
+	right: 20px;
+	bottom: 10px;
+}
+
+#buttonComment {
+	position: relative;
+	margin-bottom: 50px;
+}
+
+#buttonComment p {
+	position: absolute;
+	right: 20px;
+}
+
+#buttonComment a {
+	margin-left: 15px;
+}
+
+#sectionComments {
+	margin-bottom: 50px
+}
+
+/*\\\ COLOR FORM BUTTON \\\*/
+
+.input-field .prefix.active{
+	color: #d7ccc8;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  	border-bottom: 1px solid #d7ccc8;
+  	-webkit-box-shadow: 0 1px 0 0 #d7ccc8;
+    box-shadow: 0 1px 0 0 #d7ccc8;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  	color: #d7ccc8;
+}
+
+/*/// MEDIA QUERIES ecran - 1020px \\\*/
+
+@media all and (max-width: 1020px) {
+	body {
+		background-image: none;
+		background-color: #efebe9;
+	}
+
+	footer {
+		display: none;
+	}
+}
