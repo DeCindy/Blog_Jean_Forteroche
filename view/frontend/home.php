@@ -51,8 +51,13 @@
                 }
                 ?>
                     <span class="titleChapitre"><i class="material-icons">import_contacts</i><strong>Chapitre <?= $data['id']; ?></strong></span>
-                    <span class="nbrComment">2 commentaire(s)<i class="material-icons">chat_bubble_outline</i></span>
+                    <?php
+                    $commentManager = new Blog\Model\CommentManager();
+                    $maxComments = $commentManager->getMaxComment($data['id']);
+                    ?>
+                    <span class="nbrComment"><?= $maxComments['nbr_id']; ?> commentaire(s)<i class="material-icons">chat_bubble_outline</i></span>
                 </div>
+                
                 <div class="collapsible-body">
                     <h5><?= htmlspecialchars($data['title']); ?></h5>
                     <span class="date">Publié le : <?= $data['content_date_fr']; ?></span>

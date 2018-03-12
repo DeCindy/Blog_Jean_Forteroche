@@ -18,9 +18,9 @@ class ChapterManager extends Manager
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(content_date, \'%d/%m/%Y à %Hh%imin%ss\') AS content_date_fr FROM chapter WHERE id = ?');
         $req->execute(array($chapterId));
-        $post = $req->fetch();
+        $chapter = $req->fetch();
 
-        return $post;
+        return $chapter;
     }
 
     public function getMaxId()

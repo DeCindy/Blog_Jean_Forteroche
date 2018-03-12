@@ -43,17 +43,21 @@
 
 		<h4>Commentaires</h4>
 
+		<?php
+         while($data = $comments->fetch())
+        {
+        ?>
+
 		<div class="userComment hoverable">
-			<p><strong>Robert Patata</strong></p><span class="dateComment">Le 01/01/2018 à 15h52</span>
-			<p>Survenue des sergents de ville. Promenez-vous ici un peu du regret d'en être touchée. Six heures venaient de sonner, et, ranimé par ce contact vivifiant, il reprenait ainsi sa posture naturelle, allait tremper ses mains dans les siennes. Vieil océan, ta grandeur matérielle ne peut se flatter de faire pénétrer la pluie. Actuellement, les formes grandissaient d'instant en instant, elle pensa à un véhicule de rentrée du sommet d'une colline.</p>
+			<p><strong><?= $data['author']; ?></strong></p><span class="dateComment">Le <?= $data['comment_date_fr']; ?></span>
+			<p><?= $data['comment']; ?></p>
 			<a href="#" class="warning">Signaler ce contenu <i class="tiny material-icons red-text">warning</i></a>
 		</div>
 
-		<div class="userComment hoverable">
-			<p><strong>Robert Patata</strong></p><span class="dateComment">Le 01/01/2018 à 15h52</span>
-			<p>Survenue des sergents de ville. Promenez-vous ici un peu du regret d'en être touchée. Six heures venaient de sonner, et, ranimé par ce contact vivifiant, il reprenait ainsi sa posture naturelle, allait tremper ses mains dans les siennes. Vieil océan, ta grandeur matérielle ne peut se flatter de faire pénétrer la pluie. Actuellement, les formes grandissaient d'instant en instant, elle pensa à un véhicule de rentrée du sommet d'une colline.</p>
-			<a href="#" class="warning">Signaler ce contenu <i class="tiny material-icons red-text">warning</i></a>	
-		</div>
+		<?php
+        }
+        $comments->closeCursor();
+        ?>
 	</div>
 </section>
 
