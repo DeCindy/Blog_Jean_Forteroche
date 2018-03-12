@@ -30,44 +30,45 @@
 
 <section class="container">
         <ul class="collapsible" data-collapsible="accordion">
+            <?php
+            while($data = $chapters->fetch())
+            {
+            ?>
+
             <li class="hoverable">
+                <?php
+                if($data['id'] == $maxId['id_max'])
+                {
+                ?>
                 <div class="collapsible-header active">
-                    <span class="titleChapitre"><i class="material-icons">import_contacts</i><strong>Chapitre 3</strong></span>
+                <?php
+                }
+                else
+                {
+                ?>
+                <div class="collapsible-header">
+                <?php
+                }
+                ?>
+                    <span class="titleChapitre"><i class="material-icons">import_contacts</i><strong>Chapitre <?= $data['id']; ?></strong></span>
                     <span class="nbrComment">2 commentaire(s)<i class="material-icons">chat_bubble_outline</i></span>
                 </div>
                 <div class="collapsible-body">
-                    <h5>Cette nuit là</h5>
-                    <span class="date">Publié le : 01/01/2018</span>
-                    <span>Bruits de moteurs diminuaient, mais pas à clef. Appuyons donc tant qu'on n'y avait pas trop de la terre ni du pays du rêve enfin retrouvé. Tenant entre mes dents ces tristes paroles semblent une prophétie. Bois de l'ouest et de déverser l'eau des roches, ne voyait plus quelle conduite tenir. Dix-huit printemps formaient son âge ; les auteurs de cette véridique histoire, dit l'étranger en lui faisant prendre moi-même le contrepoison qui l'a porté ? Étendu sur le sol noirci rampaient des bouffées de gaieté. Viens avec moi, les deux amours tels que les rapports inter-groupes. Voyez celui-ci, froid comme une tôle mate... </span>
-                    <a href="index.php?action=chapitreView">Lire la suite</a>
+                    <h5><?= htmlspecialchars($data['title']); ?></h5>
+                    <span class="date">Publié le : <?= $data['content_date_fr']; ?></span>
+                    <span><?= $data['extract']; ?></span>
+                    <a href="index.php?action=chapterView&amp;id=<?=$data['id']?>&amp;idmax=<?=$maxId['id_max']?>">Lire la suite</a>
                 </div>
             </li>
-            <li class="hoverable">
-                <div class="collapsible-header">
-                    <span class="titleChapitre"><i class="material-icons">import_contacts</i><strong>Chapitre 2</strong></span>
-                    <span class="nbrComment">10 commentaire(s)<i class="material-icons">chat_bubble_outline</i></span>
-                </div>
-                <div class="collapsible-body">
-                    <h5>Blablabla</h5>
-                    <span class="date">Publié le : 01/01/2018</span>
-                    <span>Bruits de moteurs diminuaient, mais pas à clef. Appuyons donc tant qu'on n'y avait pas trop de la terre ni du pays du rêve enfin retrouvé. Tenant entre mes dents ces tristes paroles semblent une prophétie. Bois de l'ouest et de déverser l'eau des roches, ne voyait plus quelle conduite tenir. Dix-huit printemps formaient son âge ; les auteurs de cette véridique histoire, dit l'étranger en lui faisant prendre moi-même le contrepoison qui l'a porté ? Étendu sur le sol noirci rampaient des bouffées de gaieté. Viens avec moi, les deux amours tels que les rapports inter-groupes. Voyez celui-ci, froid comme une tôle mate... </span>
-                    <a href="index.php?action=chapitreView">Lire la suite</a>
-                </div>
-            </li>
-            <li class="hoverable">
-                <div class="collapsible-header">
-                    <span class="titleChapitre"><i class="material-icons">import_contacts</i><strong>Chapitre 1</strong></span>
-                    <span class="nbrComment">22 commentaire(s)<i class="material-icons">chat_bubble_outline</i></span>
-                </div>
-                <div class="collapsible-body">
-                    <h5>Blablabla</h5>
-                    <span class="date">Publié le : 01/01/2018</span>
-                    <span>Bruits de moteurs diminuaient, mais pas à clef. Appuyons donc tant qu'on n'y avait pas trop de la terre ni du pays du rêve enfin retrouvé. Tenant entre mes dents ces tristes paroles semblent une prophétie. Bois de l'ouest et de déverser l'eau des roches, ne voyait plus quelle conduite tenir. Dix-huit printemps formaient son âge ; les auteurs de cette véridique histoire, dit l'étranger en lui faisant prendre moi-même le contrepoison qui l'a porté ? Étendu sur le sol noirci rampaient des bouffées de gaieté. Viens avec moi, les deux amours tels que les rapports inter-groupes. Voyez celui-ci, froid comme une tôle mate... </span>
-                    <a href="index.php?action=chapitreView">Lire la suite</a>
-                </div>
-            </li>
+
+            <?php
+            }
+            $chapters->closeCursor();
+            ?>
         </ul>
 </section>
+
+
 
 <?php $content = ob_get_clean(); ?>
 

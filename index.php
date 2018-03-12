@@ -5,18 +5,25 @@ try
 {
 	if(isset($_GET['action']))
 	{
-		if($_GET['action'] == 'listChapitre')
+		if($_GET['action'] == 'home')
 		{
-			listChapitre();
+			home();
 		}
-		elseif ($_GET['action'] == 'chapitreView')
+		elseif ($_GET['action'] == 'chapterView')
 		{
-			chapitreView();
+			if(isset($_GET['id']) && $_GET['id'] > 0 && $_GET['id'] <= $_GET['idmax'])
+			{
+				chapterView();
+			}
+			else
+			{
+				throw new Exception(' aucun identifiant de billet envoyé');
+			}
 		}
 	}
 	else
 	{
-		listChapitre();
+		home();
 	}
 }
 catch(Exception $e) 
