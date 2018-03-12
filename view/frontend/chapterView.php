@@ -22,16 +22,16 @@
 			
 			<div id="modal1" class="modal">
 	    		<div class="modal-content">
-	      			<form action="encours.php" method="post">
+	      			<form action="index.php?action=addComment&amp;id=<?= $_GET['id'] ?>&amp;idmax=<?=$_GET['idmax']?>" method="post">
 			      		<div class="input-field col l6">
 			      			<i class="material-icons prefix">account_circle</i>
-			      			<input id="nameComment" type="text" class="validate">
-			      			<label for="nameComment">Nom</label>
+			      			<input id="author" name="author" type="text" class="validate">
+			      			<label for="author">Nom</label>
 			      		</div>
 			      		<div class="input-field col l6">
 	          				<i class="material-icons prefix">mode_edit</i>
-	          				<textarea id="messageComment" class="materialize-textarea"></textarea>
-	          				<label for="messageComment">Message</label>
+	          				<textarea id="comment" name="comment" class="materialize-textarea"></textarea>
+	          				<label for="comment">Message</label>
 	       				</div>
 	       				<div class="modal-footer">
 	      					<button class="btn modal-close waves-effect waves-light brown lighten-4 black-text" type="submit" name="action">Envoyer<i class="material-icons right">send</i></button>
