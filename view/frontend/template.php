@@ -36,7 +36,7 @@
 		                <a class="subheader">Administration</a>
 		            </li>
 		            <li>
-		                <a class="waves-effect" href="http://localhost/tests/Blog/view/backend/admin.php">Connectez-vous</a>
+		                <a class="waves-effect" href="index.php?action=loginView">Connectez-vous</a>
 		            </li>
 		        </ul>
 

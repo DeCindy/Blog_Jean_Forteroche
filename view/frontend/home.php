@@ -61,7 +61,7 @@
                 <div class="collapsible-body">
                     <h5><?= htmlspecialchars($data['title']); ?></h5>
                     <span class="date">Publié le <?= $data['content_date_fr']; ?></span>
-                    <span><?= $data['extract']; ?></span>
+                    <span><?= $data['extract']; ?> [...]</span>
                     <a href="index.php?action=chapterView&amp;id=<?=$data['id']?>&amp;idmax=<?=$maxId['id_max']?>">Lire la suite</a>
                 </div>
             </li>

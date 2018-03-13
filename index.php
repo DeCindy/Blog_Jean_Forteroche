@@ -1,5 +1,8 @@
 <?php
+session_start ();
+
 require('controller/frontend.php');
+require('controller/backend.php');
 
 try
 {
@@ -36,6 +39,32 @@ try
 			else
 			{
 				throw new Exception(' aucun identifiant de billet envoyé');
+			}
+		}
+		elseif ($_GET['action'] == 'loginView')
+		{
+			loginView();
+		}
+		elseif ($_GET['action'] == 'controlLogin')
+		{
+			if (!empty($_POST['email']) && !empty($_POST['pwd']))
+				{
+					controlLogin($_POST['email'], $_POST['pwd']);
+				}
+				else
+				{
+					throw new Exception(' tous les champs ne sont pas remplis !');
+				}
+		}
+		elseif ($_GET['action'] == 'adminView')
+		{
+			if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) 
+			{
+				adminView();
+			}
+			else
+			{
+				throw new Exception(' vous n\'avez pas accès, veuillez vous connecter');
 			}
 		}
 	}
