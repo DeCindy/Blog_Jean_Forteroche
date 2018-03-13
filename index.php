@@ -67,6 +67,28 @@ try
 				throw new Exception(' vous n\'avez pas accès, veuillez vous connecter');
 			}
 		}
+		elseif ($_GET['action'] == 'editChapter')
+		{
+			if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) 
+			{
+				editChapter();
+			}
+			else
+			{
+				throw new Exception(' vous n\'avez pas accès, veuillez vous connecter');
+			}
+		}
+		elseif ($_GET['action'] == 'manageComments')
+		{
+			if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) 
+			{
+				manageComments();
+			}
+			else
+			{
+				throw new Exception(' vous n\'avez pas accès, veuillez vous connecter');
+			}
+		}
 	}
 	else
 	{

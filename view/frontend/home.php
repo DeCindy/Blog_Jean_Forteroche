@@ -55,7 +55,8 @@
                     $commentManager = new Blog\Model\CommentManager();
                     $maxComments = $commentManager->getMaxComment($data['id']);
                     ?>
-                    <span class="nbrComment"><?= $maxComments['nbr_id']; ?> commentaire(s)<i class="material-icons">chat_bubble_outline</i></span>
+                    <a class="black-text" href="index.php?action=chapterView&amp;id=<?=$data['id']?>&amp;idmax=<?=$maxId['id_max']?>&amp;#commentaires">
+                    <span class="nbrComment"><?= $maxComments['nbr_id']; ?> commentaire(s)<i class="material-icons">chat_bubble_outline</i></span></a>
                 </div>
                 
                 <div class="collapsible-body">

@@ -41,7 +41,7 @@
 	  		</div>
 		</div> 
 
-		<h4>Commentaires</h4>
+		<h4 id="commentaires">Commentaires</h4>
 
 		<?php
          while($data = $comments->fetch())

@@ -12,11 +12,12 @@
         
     <body>
         <nav>
-            <div class="nav-wrapper">
+            <div class="nav-wrapper black">
                   <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                   <ul class="right hide-on-med-and-down">
-                    <li><a href="#">Creer un nouveau chapitre</a></li>
-                    <li><a href="#">Gérer les commentaires</a></li>
+                    <li><a href="index.php?action=adminView">Accueil</a></li>
+                    <li><a href="index.php?action=editChapter">Creer un nouveau chapitre</a></li>
+                    <li><a href="index.php?action=manageComments">Gérer les commentaires</a></li>
                     <li><a href="index.php?action=home">Retour au site</a></li>
                   </ul>
                   <ul class="side-nav" id="mobile-demo">

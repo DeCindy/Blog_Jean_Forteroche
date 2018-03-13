@@ -29,3 +29,13 @@ function adminView()
 {
 	require('view/backend/adminView.php');
 }
+
+function editChapter()
+{
+	require('view/backend/editChapterView.php');
+}
+
+function manageComments()
+{
+	require('view/backend/manageCommentsView.php');
+}
