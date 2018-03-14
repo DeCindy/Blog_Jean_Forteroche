@@ -31,4 +31,22 @@ class ChapterManager extends Manager
 
         return $req;
     }
+
+    public function addChapter($content, $title)
+    {
+        $db = $this->dbConnect();
+        $chapter = $db->prepare('INSERT INTO `chapter`(`title`, `content`, `content_date`) VALUES (?,?,NOW())');
+        $chapter->execute(array($title, $content));
+
+        return $chapter;
+    }
+
+    public function deleteChapter($idChapter)
+    {
+        $db = $this->dbConnect();
+        $chapter = $db->prepare('DELETE FROM chapter WHERE id=?');
+        $chapter->execute(array($idChapter));
+
+        return $chapter;
+    }
 }

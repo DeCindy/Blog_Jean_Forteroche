@@ -3,39 +3,58 @@
 <?php ob_start(); ?>
 
 <header>
-	<h3 class="center">CHAPITRE</h3>
+	<h3 class="center">Gérer les chapitres</h3>
 
 </header>
 
 <section>
 	<div class="container">
-	    <table class="striped">
+		<a class="waves-effect waves-light btn blue" href="index.php?action=writeChapter"><i class="material-icons left">create</i>Créer un nouveau chapitre</a>
+
+	    <table class="striped centered ">
 	        <thead>
 	          <tr>
-	              <th>Name</th>
-	              <th>Item Name</th>
-	              <th>Item Price</th>
+	              <th>Numéro</th>
+	              <th>Titre</th>
+	              <th>Contenu</th>
+	              <th>Action</th>
 	          </tr>
 	        </thead>
 
-	        <tbody>
+			<tbody>
+
+			<?php
+            while($data = $chapters->fetch())
+            {
+            ?>
+
 	          <tr>
-	            <td>Alvin</td>
-	            <td>Eclair</td>
-	            <td>$0.87</td>
+	            <td><?= $data['id']; ?></td>
+	            <td><?= '<strong>' . $data['title'] . '</strong>'; ?></td>
+	            <td><?= $data['extract']; ?></td>
+	            <td>
+	            	<p><a href=""><i class="material-icons">create</i>modifier</a></p>
+	            	<p><a class="modal-trigger" href="#modal1"><i class="material-icons">delete_forever</i>supprimer</a></p>
+	            		<div id="modal1" class="modal">
+    						<div class="modal-content">
+      							<h4>Supprimer un chapitre</h4>
+      							<p>Vouler vous supprimer le chapitre N°<?= $data['id']; ?> <?= $data['title']; ?> ? </p>
+    						</div>
+    						<div class="modal-footer">
+      							<a href="index.php?action=deleteChapter&amp;id=<?=$data['id']?>" class="modal-action modal-close waves-effect waves-green btn-flat">OUI</a>
+      							<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">NON</a>
+    						</div>
+  						</div>
+	            </td>
 	          </tr>
-	          <tr>
-	            <td>Alan</td>
-	            <td>Jellybean</td>
-	            <td>$3.76</td>
-	          </tr>
-	          <tr>
-	            <td>Jonathan</td>
-	            <td>Lollipop</td>
-	            <td>$7.00</td>
-	          </tr>
+
+	        <?php
+            }
+            $chapters->closeCursor();
+            ?>
+
 	        </tbody>
-	      </table>
+	    </table>
 	</div>
 </section>
 

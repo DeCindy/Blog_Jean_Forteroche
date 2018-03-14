@@ -77,12 +77,42 @@ try
 				{
 					manageComments();
 				}
+				elseif ($_GET['action'] == 'writeChapter')
+				{
+					writeChapter();
+				}
+				elseif ($_GET['action'] == 'addChapter')
+				{
+					if (!empty($_POST['content']) && !empty($_POST['title']))
+					{
+						addChapter($_POST['content'], $_POST['title']);
+					}
+					else
+					{
+						throw new Exception(' tous les champs ne sont pas remplis !');
+					}
+				}
+				elseif ($_GET['action'] == 'deleteChapter')
+				{
+					if (isset($_GET['id']))
+					{
+						deleteChapter($_GET['id']);
+					}
+					else
+					{
+						throw new Exception(' aucun identifiant de billet envoyé');
+					}
+				}
 			}
 			else
 			{
 				throw new Exception(' vous n\'avez pas accès, veuillez vous connecter');
 			}
 		}
+	}
+	else
+	{
+		home();
 	}
 }
 catch(Exception $e) 
