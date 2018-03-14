@@ -10,13 +10,12 @@ function loginView()
 function controlLogin($emailUser, $pwdUser)
 {
 	$loginManager = new Blog\Model\LoginManager();
-	$login = $loginManager->getLogin();
+	$login = $loginManager->getLogin($emailUser, $pwdUser);
 
-	if ($login['email'] == $emailUser && $login['password'] == $pwdUser) 
+	if (!empty($login)) 
 	{
 		session_start();
-		$_SESSION['login'] = $emailUser;
-		$_SESSION['pwd'] = $pwdUser;
+		$_SESSION['login'] = $login['id'];
 		header('location: index.php?action=adminView');
 	}
 	else

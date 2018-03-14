@@ -56,43 +56,33 @@ try
 					throw new Exception(' tous les champs ne sont pas remplis !');
 				}
 		}
-		elseif ($_GET['action'] == 'adminView')
+		elseif ($_GET['action'] == '')
 		{
-			if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) 
+			home();
+		}
+		// ADMIN
+		else
+		{
+			if (isset($_SESSION['login']))
 			{
-				adminView();
+				if ($_GET['action'] == 'adminView')
+				{
+					adminView();
+				}
+				elseif ($_GET['action'] == 'editChapter')
+				{
+					editChapter();
+				}
+				elseif ($_GET['action'] == 'manageComments')
+				{
+					manageComments();
+				}
 			}
 			else
 			{
 				throw new Exception(' vous n\'avez pas accès, veuillez vous connecter');
 			}
 		}
-		elseif ($_GET['action'] == 'editChapter')
-		{
-			if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) 
-			{
-				editChapter();
-			}
-			else
-			{
-				throw new Exception(' vous n\'avez pas accès, veuillez vous connecter');
-			}
-		}
-		elseif ($_GET['action'] == 'manageComments')
-		{
-			if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) 
-			{
-				manageComments();
-			}
-			else
-			{
-				throw new Exception(' vous n\'avez pas accès, veuillez vous connecter');
-			}
-		}
-	}
-	else
-	{
-		home();
 	}
 }
 catch(Exception $e) 
