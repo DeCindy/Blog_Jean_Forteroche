@@ -103,6 +103,28 @@ try
 						throw new Exception(' aucun identifiant de billet envoyé');
 					}
 				}
+				elseif ($_GET['action'] == 'changeChapter')
+				{
+					if (isset($_GET['id']))
+					{
+						changeChapter($_GET['id']);
+					}
+					else
+					{
+						throw new Exception(' aucun identifiant de billet envoyé');
+					}
+				}
+				elseif ($_GET['action'] == 'updateChapter')
+				{
+					if (isset($_GET['id']) && !empty($_POST['content']) && !empty($_POST['title']))
+					{
+						updateChapter($_GET['id'], $_POST['content'], $_POST['title']);
+					}
+					else
+					{
+						throw new Exception(' tous les champs ne sont pas remplis !');
+					}
+				}
 			}
 			else
 			{

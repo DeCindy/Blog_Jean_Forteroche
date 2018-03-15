@@ -8,7 +8,7 @@ class ChapterManager extends Manager
     public function getChapters()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(content_date, \'%d/%m/%Y à %Hh%i\') AS content_date_fr, SUBSTR(content, 1, 250) AS extract FROM chapter ORDER BY content_date DESC LIMIT 0, 5');
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(content_date, \'%d/%m/%Y à %Hh%i\') AS content_date_fr, SUBSTR(content, 1, 400) AS extract FROM chapter ORDER BY content_date DESC LIMIT 0, 5');
 
         return $req;
     }
@@ -46,6 +46,15 @@ class ChapterManager extends Manager
         $db = $this->dbConnect();
         $chapter = $db->prepare('DELETE FROM chapter WHERE id=?');
         $chapter->execute(array($idChapter));
+
+        return $chapter;
+    }
+
+    public function updateChapter($idChapter, $contentChapter, $titleChapter)
+    {
+        $db = $this->dbConnect();
+        $chapter = $db->prepare('UPDATE `chapter` SET `title`=?,`content`=? WHERE id=?');
+        $chapter->execute(array($titleChapter, $contentChapter, $idChapter));
 
         return $chapter;
     }

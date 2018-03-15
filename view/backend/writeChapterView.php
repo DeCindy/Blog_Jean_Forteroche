@@ -3,10 +3,26 @@
 <?php ob_start(); ?>
 
 <div class="container">
-	<form action="index.php?action=addChapter" method="post">
+	<?php 
+	if(!empty($chapter['id']))
+	{ 
+	?>
+		<form action="index.php?action=updateChapter&amp;id=<?=$chapter['id']; ?>" method="post">
+		<input type="text" name="title" value="<?= $chapter['title']; ?>">
+		<textarea name="content"><?= $chapter['content']; ?></textarea>
+	<?php
+	} 
+	else
+	{ 
+	?>
+		<form action="index.php?action=addChapter" method="post">
 		<input type="text" name="title" placeholder="Ecrivez votre titre ici">
 		<textarea name="content"></textarea>
-		<button class="btn waves-effect waves-light blue" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
+	<?php
+    }
+    ?>
+
+	<button class="btn waves-effect waves-light blue" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
         
 	</form>
 </div> 		
