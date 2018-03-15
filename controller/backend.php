@@ -100,3 +100,8 @@ function updateChapter($idChapter, $contentChapter, $titleChapter)
 		header('location: index.php?action=editChapter');
 	}
 }
+
+function validateDelete()
+{
+	require('view/backend/validateDeleteView.php');
+}

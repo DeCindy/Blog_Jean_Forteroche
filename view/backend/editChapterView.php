@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 <header>
-	<h3 class="center">Gérer les chapitres</h3>
+	<h4 class="center">Gérer les chapitres</h4>
 
 </header>
 
@@ -34,7 +34,7 @@
 		            <td><?= $data['extract']; ?> [...]</td>
 		            <td>
 	            		<p><a href="index.php?action=changeChapter&amp;id=<?=$data['id']?>"><i class="material-icons">create</i>modifier</a></p>
-	            		<p><a href="index.php?action=deleteChapter&amp;id=<?=$data['id']?>"><i class="material-icons">delete_forever</i>supprimer</a></p>
+	            		<p><a href="index.php?action=validateDelete&amp;id=<?=$data['id']?>&amp;title=<?=$data['title']?>"><i class="material-icons">delete_forever</i>supprimer</a></p>
 	            	</td>
 	          	</tr>
 

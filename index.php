@@ -92,6 +92,17 @@ try
 						throw new Exception(' tous les champs ne sont pas remplis !');
 					}
 				}
+				elseif ($_GET['action'] == 'validateDelete')
+				{
+					if (isset($_GET['id']) && isset($_GET['title']))
+					{
+						validateDelete();
+					}
+					else
+					{
+						throw new Exception(' aucun identifiant de billet envoyé');
+					}
+				}
 				elseif ($_GET['action'] == 'deleteChapter')
 				{
 					if (isset($_GET['id']))

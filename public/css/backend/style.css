@@ -43,3 +43,7 @@ textarea {
 td{
     padding: 20px;
 }
+
+.validation {
+    text-align: center;
+}
