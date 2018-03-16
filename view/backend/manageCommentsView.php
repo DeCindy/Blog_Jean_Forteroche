@@ -3,37 +3,46 @@
 <?php ob_start(); ?>
 
 <header>
-	<h3 class="center">COMMENTAIRES</h3>
+	<h4 class="center">Gérer les commentaires</h4>
 
 </header>
 
 <section>
 	<div class="container">
-	    <table class="striped">
+	    <table class="striped centered">
 	        <thead>
 	          <tr>
-	              <th>Name</th>
-	              <th>Item Name</th>
-	              <th>Item Price</th>
+	              <th>Numéro de Chapitre</th>
+	              <th>Auteur</th>
+	              <th>Commentaire</th>
+	              <th>Date</th>
+	              <th>Action</th>
 	          </tr>
 	        </thead>
 
 	        <tbody>
+
+	        <?php
+            while($data = $comments->fetch())
+            {
+            ?>
+
 	          <tr>
-	            <td>Alvin</td>
-	            <td>Eclair</td>
-	            <td>$0.87</td>
+	            <td><strong><?= $data['chapter_id']; ?></strong></td>
+	            <td><?= $data['author']; ?></td>
+	            <td><strong><?= $data['comment']; ?></strong></td>
+	            <td><?= $data['comment_date']; ?></td>
+	            <td>
+	            	<p><a href="index.php?action=changeComment&amp;id=<?=$data['id']?>"><i class="material-icons">create</i><br/>modifier</a></p>
+	            	<p><a href="index.php?action=validateDelete&amp;id=<?=$data['id']?>&amp;auteur=<?=$data['author'] ?>&amp;chapitre=<?=$data['chapter_id'] ?>"><i class="material-icons">delete_forever</i><br/>supprimer</a></p>
+	            </td>
 	          </tr>
-	          <tr>
-	            <td>Alan</td>
-	            <td>Jellybean</td>
-	            <td>$3.76</td>
-	          </tr>
-	          <tr>
-	            <td>Jonathan</td>
-	            <td>Lollipop</td>
-	            <td>$7.00</td>
-	          </tr>
+
+	        <?php
+            }
+            $comments->closeCursor();
+            ?>
+
 	        </tbody>
 	      </table>
 	</div>

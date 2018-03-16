@@ -41,6 +41,17 @@ try
 				throw new Exception(' aucun identifiant de billet envoyé');
 			}
 		}
+		elseif ($_GET['action'] == 'reportComment')
+		{
+			if (isset($_GET['id']) && $_GET['idchapter'] && $_GET['idmax'])
+			{
+				reportComment($_GET['id'], $_GET['idchapter'], $_GET['idmax']);
+			}
+			else
+			{
+				throw new Exception(' aucun identifiant de billet envoyé');
+			}
+		}
 		elseif ($_GET['action'] == 'loginView')
 		{
 			loginView();
@@ -73,13 +84,13 @@ try
 				{
 					editChapter();
 				}
-				elseif ($_GET['action'] == 'manageComments')
-				{
-					manageComments();
-				}
 				elseif ($_GET['action'] == 'writeChapter')
 				{
 					writeChapter();
+				}
+				elseif ($_GET['action'] == 'manageComments')
+				{
+					manageComments();
 				}
 				elseif ($_GET['action'] == 'addChapter')
 				{
@@ -94,7 +105,7 @@ try
 				}
 				elseif ($_GET['action'] == 'validateDelete')
 				{
-					if (isset($_GET['id']) && isset($_GET['title']))
+					if (isset($_GET['id']))
 					{
 						validateDelete();
 					}
@@ -130,6 +141,39 @@ try
 					if (isset($_GET['id']) && !empty($_POST['content']) && !empty($_POST['title']))
 					{
 						updateChapter($_GET['id'], $_POST['content'], $_POST['title']);
+					}
+					else
+					{
+						throw new Exception(' tous les champs ne sont pas remplis !');
+					}
+				}
+				elseif ($_GET['action'] == 'deleteComment')
+				{
+					if (isset($_GET['id']))
+					{
+						deleteComment($_GET['id']);
+					}
+					else
+					{
+						throw new Exception(' aucun identifiant de billet envoyé');
+					}
+				}
+				elseif ($_GET['action'] == 'changeComment')
+				{
+					if (isset($_GET['id']))
+					{
+						changeComment($_GET['id']);
+					}
+					else
+					{
+						throw new Exception(' aucun identifiant de billet envoyé');
+					}
+				}
+				elseif ($_GET['action'] == 'updateComment')
+				{
+					if (isset($_GET['id']) && !empty($_POST['comment']))
+					{
+						updateComment($_GET['id'], $_POST['comment']);
 					}
 					else
 					{

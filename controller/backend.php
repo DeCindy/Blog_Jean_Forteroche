@@ -1,5 +1,6 @@
 <?php
 
+require_once('model/CommentManager.php');
 require_once('model/ChapterManager.php');
 require_once('model/LoginManager.php');
 
@@ -13,14 +14,14 @@ function adminView()
 	require('view/backend/adminView.php');
 }
 
-function manageComments()
-{
-	require('view/backend/manageCommentsView.php');
-}
-
 function writeChapter()
 {
-	require('view/backend/writeChapterView.php');
+	require('view/backend/writeView.php');
+}
+
+function validateDelete()
+{
+	require('view/backend/validateDeleteView.php');
 }
 
 function controlLogin($emailUser, $pwdUser)
@@ -83,15 +84,15 @@ function changeChapter($idChapter)
 	$chapterManager = new Blog\Model\ChapterManager();
 	$chapter = $chapterManager->getChapter($idChapter);
 
-	require('view/backend/writeChapterView.php');
+	require('view/backend/writeView.php');
 }
 
 function updateChapter($idChapter, $contentChapter, $titleChapter)
 {
 	$chapterManager = new Blog\Model\ChapterManager();
-	$chapter = $chapterManager->updateChapter($idChapter, $contentChapter, $titleChapter);
+	$update = $chapterManager->updateChapter($idChapter, $contentChapter, $titleChapter);
 
-	if ($delete === false) 
+	if ($update === false) 
 	{
 		throw new Exception(' impossible de modifier le chapitre !');
 	}
@@ -101,7 +102,48 @@ function updateChapter($idChapter, $contentChapter, $titleChapter)
 	}
 }
 
-function validateDelete()
+function manageComments()
 {
-	require('view/backend/validateDeleteView.php');
+	$commentManager = new Blog\Model\CommentManager();
+	$comments = $commentManager->getAllComments();
+	
+	require('view/backend/manageCommentsView.php');
+}
+
+function deleteComment($idComment)
+{
+	$commentManager = new Blog\Model\CommentManager();
+	$delete = $commentManager->deleteComment($idComment);
+
+	if ($delete === false) 
+	{
+		throw new Exception(' impossible d\'effacer le commentaire !');
+	}
+	else
+	{
+		header('location: index.php?action=manageComments');
+	}
+}
+
+function changeComment($idComment)
+{
+	$commentManager = new Blog\Model\CommentManager();
+	$comment = $commentManager->getComment($idComment);
+
+	require('view/backend/writeView.php');
+}
+
+function updateComment($idComment, $comment)
+{
+	$commentManager = new Blog\Model\CommentManager();
+	$update = $commentManager->updateComment($idComment, $comment);
+
+	if ($update === false) 
+	{
+		throw new Exception(' impossible de modifier le chapitre !');
+	}
+	else
+	{
+		header('location: index.php?action=manageComments');
+	}
 }

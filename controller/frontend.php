@@ -37,3 +37,11 @@ function addComment($chapterId, $idmax, $author, $comment)
 		header('location: index.php?action=chapterView&id=' . $chapterId . '&idmax=' . $idmax);
 	}
 }
+
+function reportComment($idComment, $idChapter, $idMax)
+{
+	$commentManager = new Blog\Model\CommentManager();
+	$report = $commentManager->reportComment($idComment);
+
+	header('location: index.php?action=chapterView&id=' . $idChapter . '&idmax=' . $idMax);
+}

@@ -11,7 +11,7 @@
 	<div class="container">
 		<a class="waves-effect waves-light btn blue" href="index.php?action=writeChapter"><i class="material-icons left">create</i>Créer un nouveau chapitre</a>
 
-	    <table class="striped centered ">
+	    <table class="striped centered">
 	        <thead>
 	          	<tr>
 	                <th>Numéro</th>
