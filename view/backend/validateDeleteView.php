@@ -9,9 +9,9 @@
 	?>
 	<h4> Voulez-vous supprimer le chapitre N° <?=$_GET['id'] ?><br/><strong><?= $_GET['title'] ?></strong> ?</h4>
 	
-	<a class="waves-effect waves-light btn blue" href="index.php?action=deleteComment&amp;id=<?=$_GET['id']?>">OUI</a>
-	<a class="waves-effect waves-light btn blue" href="index.php?action=manageComments">NON</a>
-	
+	<a class="waves-effect waves-light btn blue" href="index.php?action=deleteChapter&amp;id=<?=$_GET['id']?>">OUI</a>
+	<a class="waves-effect waves-light btn blue" href="index.php?action=editChapter">NON</a>
+
 	<?php
 	}
 	else

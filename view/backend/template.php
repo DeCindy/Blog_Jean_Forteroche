@@ -6,8 +6,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Lora:400i|Quattrocento" rel="stylesheet">
-        <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-        <script>tinymce.init({ selector:'textarea' });</script>
         <link rel="stylesheet" href="public/css/backend/style.css">
 
     </head>
@@ -34,6 +32,8 @@
 
     	<script src="https://code.jquery.com/jquery-1.12.3.js"   integrity="sha256-1XMpEtA4eKXNNpXcJ1pmMPs8JV+nwLdEqwiJeCQEkyc="   crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+      <script>tinymce.init({ selector:'textarea' });</script>
       <script src="public/js/init.js"></script>
         
     </body>
