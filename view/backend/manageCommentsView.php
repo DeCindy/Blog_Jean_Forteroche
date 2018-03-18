@@ -8,43 +8,90 @@
 </header>
 
 <section>
+	<?php
+	if(!empty($test))
+	{
+	?>
 	<div class="container">
-	    <table class="striped centered">
+	    <table class="bordered centered">
 	        <thead>
-	          <tr>
-	              <th>Numéro de Chapitre</th>
-	              <th>Auteur</th>
-	              <th>Commentaire</th>
-	              <th>Date</th>
-	              <th>Action</th>
-	          </tr>
+	        	<tr>
+		          	<th class="red-text">Signalement</th>
+		            <th>Numéro de Chapitre</th>
+		            <th>Auteur</th>
+		            <th>Commentaire</th>
+		            <th>Date</th>
+		            <th>Action</th>
+	          	</tr>
 	        </thead>
 
 	        <tbody>
+	        
+	        <?php
+            while($data = $report->fetch())
+            {
+            ?>
+	        	<tr>
+		          	<td><br/><i class="material-icons red-text">warning</i><br/></td>
+		            <td><strong><?= $data['chapter_id']; ?></strong></td>
+		            <td><?= $data['author']; ?></td>
+		            <td><strong><?= $data['comment']; ?></strong></td>
+		            <td><?= $data['comment_date_fr']; ?></td>
+		            <td>
+		            	<p><a href="index.php?action=changeComment&amp;id=<?=$data['id']?>"><i class="material-icons">create</i><br/>modifier</a></p>
+		            	<p><a href="index.php?action=validateDelete&amp;id=<?=$data['id']?>&amp;auteur=<?=$data['author'] ?>&amp;chapitre=<?=$data['chapter_id'] ?>"><i class="material-icons">delete_forever</i><br/>supprimer</a></p>
+		            </td>
+	          	</tr>
 
+	        <?php
+            }
+            $report->closeCursor();
+            ?>
+
+	    	</tbody>
+	    </table>
+	</div>
+
+	<?php
+	}
+	?>
+
+	<div class="container">
+	    <table class="striped centered">
+	        <thead>
+	          	<tr>
+	              	<th>Numéro de Chapitre</th>
+	              	<th>Auteur</th>
+	              	<th>Commentaire</th>
+	              	<th>Date</th>
+	              	<th>Action</th>
+	          	</tr>
+	        </thead>
+
+	        <tbody>
+	        
 	        <?php
             while($data = $comments->fetch())
             {
             ?>
-
-	          <tr>
-	            <td><strong><?= $data['chapter_id']; ?></strong></td>
-	            <td><?= $data['author']; ?></td>
-	            <td><strong><?= $data['comment']; ?></strong></td>
-	            <td><?= $data['comment_date']; ?></td>
-	            <td>
-	            	<p><a href="index.php?action=changeComment&amp;id=<?=$data['id']?>"><i class="material-icons">create</i><br/>modifier</a></p>
-	            	<p><a href="index.php?action=validateDelete&amp;id=<?=$data['id']?>&amp;auteur=<?=$data['author'] ?>&amp;chapitre=<?=$data['chapter_id'] ?>"><i class="material-icons">delete_forever</i><br/>supprimer</a></p>
-	            </td>
-	          </tr>
+	        	<tr>
+		            <td><strong><?= $data['chapter_id']; ?></strong></td>
+		            <td><?= $data['author']; ?></td>
+		            <td><strong><?= $data['comment']; ?></strong></td>
+		            <td><?= $data['comment_date_fr']; ?></td>
+		            <td>
+		            	<p><a href="index.php?action=changeComment&amp;id=<?=$data['id']?>"><i class="material-icons">create</i><br/>modifier</a></p>
+		            	<p><a href="index.php?action=validateDelete&amp;id=<?=$data['id']?>&amp;auteur=<?=$data['author'] ?>&amp;chapitre=<?=$data['chapter_id'] ?>"><i class="material-icons">delete_forever</i><br/>supprimer</a></p>
+		            </td>
+	          	</tr>
 
 	        <?php
             }
             $comments->closeCursor();
             ?>
 
-	        </tbody>
-	      </table>
+	    	</tbody>
+	    </table>
 	</div>
 </section>
 

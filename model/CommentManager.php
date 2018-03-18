@@ -63,7 +63,7 @@ class CommentManager extends Manager
     public function updateComment($idComment, $comment)
     {
         $db = $this->dbConnect();
-        $update = $db->prepare('UPDATE `comments` SET `comment`=? WHERE id=?');
+        $update = $db->prepare('UPDATE `comments` SET `comment`=?, `report`="" WHERE id=?');
         $update->execute(array($comment, $idComment));
 
         return $update;
@@ -72,9 +72,26 @@ class CommentManager extends Manager
     public function reportComment($idComment)
     {
         $db = $this->dbConnect();
-        $report = $db->prepare('UPDATE `comments` SET `report`= "OUI" WHERE id=?');
+        $report = $db->prepare('UPDATE `comments` SET `report`="OUI" WHERE id=?');
         $report->execute(array($idComment));
 
         return $report;
+    }
+
+    public function testReport()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT * FROM `comments` WHERE `report`="OUI"');
+        $req = $req->fetch();
+
+        return $req;
+    }
+
+    public function getReport()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT *, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr  FROM `comments` WHERE `report`="OUI" ORDER BY comment_date DESC');
+
+        return $req;
     }
 }

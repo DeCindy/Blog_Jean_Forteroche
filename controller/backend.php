@@ -106,7 +106,10 @@ function manageComments()
 {
 	$commentManager = new Blog\Model\CommentManager();
 	$comments = $commentManager->getAllComments();
-	
+
+	$test = $commentManager->testReport();
+	$report = $commentManager->getReport();
+
 	require('view/backend/manageCommentsView.php');
 }
 
