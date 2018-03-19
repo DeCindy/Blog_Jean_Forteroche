@@ -3,7 +3,9 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no">
+
         <title><?= $title ?></title>
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Lora:400i|Quattrocento" rel="stylesheet">
@@ -16,6 +18,7 @@
 
         <h2 id="title" class="center-align"><i class="medium material-icons"">terrain</i><br/>UN BILLET<br/>POUR L'ALASKA</h2>
         
+        <!-- BOUTON INFO AUTEUR/CONNECTION ADMIN -->
         <section class="info">
 		    <div>
 		        <ul id="slide-out" class="side-nav">
@@ -44,6 +47,7 @@
 		        <a href="#" data-activates="slide-out" class="fixed-action-btn button-collapse"><i class="medium material-icons black-text">info</i></a>
 		    </div>
 		</section>
+		<!-- FIN -->
 
         <?= $content ?>
 

@@ -3,6 +3,7 @@
 <?php ob_start(); ?>
 
 <div class="container validation">
+	<!-- AFFICHAGE VALIDATION SI SUPPRESSION DU CHAPITRE -->
 	<?php
 	if(!empty($_GET['title']))
 	{
@@ -11,7 +12,9 @@
 	
 	<a class="waves-effect waves-light btn blue" href="index.php?action=deleteChapter&amp;id=<?=$_GET['id']?>">OUI</a>
 	<a class="waves-effect waves-light btn blue" href="index.php?action=editChapter">NON</a>
+	<!-- FIN -->
 
+	<!-- AFFICHAGE VALIDATION SI SUPRESSION DU COMMENTAIRE -->
 	<?php
 	}
 	else
@@ -21,10 +24,11 @@
 	
 	<a class="waves-effect waves-light btn blue" href="index.php?action=deleteComment&amp;id=<?=$_GET['id']?>">OUI</a>
 	<a class="waves-effect waves-light btn blue" href="index.php?action=manageComments">NON</a>
-	
+	<!-- FIN -->
 	<?php
 	}
 	?>
+
 </div>
 
 <?php $content = ob_get_clean(); ?>

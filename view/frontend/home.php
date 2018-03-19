@@ -4,6 +4,8 @@
 <header>
     <div class="container">
         <div class="slider">
+
+            <!-- SLIDER D'ACCUEIL -->
             <ul class="slides">
                 <li>
                     <img src="">
@@ -24,6 +26,7 @@
                     </div>
                 </li>
             </ul>
+            <!-- FIN -->
         </div>
     </div>
 </header>
@@ -34,8 +37,9 @@
             while($data = $chapters->fetch())
             {
             ?>
-
             <li class="hoverable">
+
+                <!-- AJOUTE "ACTIVE" A LA CLASSE DU DERNIER CHAPITRE POUR ETRE OUVERT SUR CE CHAPITRE-->
                 <?php
                 if($data['id'] == $maxId['id_max'])
                 {
@@ -50,21 +54,29 @@
                 <?php
                 }
                 ?>
+                <!-- FIN -->
+
+                    <!-- ENTETE DU DESCRIPTIF DU CHAPITRE -->
                     <span class="titleChapitre"><i class="material-icons">import_contacts</i><strong>Chapitre <?= $data['id']; ?></strong></span>
+                    <a class="black-text" href="index.php?action=chapterView&amp;id=<?=$data['id']?>&amp;idmax=<?=$maxId['id_max']?>&amp;#commentaires">
+
+                    <!-- PERMET L'AFFICHAGE DU NOMBRE DE COMMENTAIRES -->
                     <?php
                     $commentManager = new Blog\Model\CommentManager();
                     $maxComments = $commentManager->getMaxComment($data['id']);
                     ?>
-                    <a class="black-text" href="index.php?action=chapterView&amp;id=<?=$data['id']?>&amp;idmax=<?=$maxId['id_max']?>&amp;#commentaires">
                     <span class="nbrComment"><?= $maxComments['nbr_id']; ?> commentaire(s)<i class="material-icons">chat_bubble_outline</i></span></a>
+                    <!-- FIN -->
                 </div>
                 
+                <!-- DESCRIPTIF DU CHAPITRE -->
                 <div class="collapsible-body">
-                    <h5><?= htmlspecialchars($data['title']); ?></h5>
+                    <h5><?= $data['title']; ?></h5>
                     <span class="date">Publié le <?= $data['content_date_fr']; ?></span>
                     <span><?= $data['extract']; ?> [...]</span>
                     <a href="index.php?action=chapterView&amp;id=<?=$data['id']?>&amp;idmax=<?=$maxId['id_max']?>">Lire la suite</a>
                 </div>
+                <!-- FIN -->
             </li>
 
             <?php

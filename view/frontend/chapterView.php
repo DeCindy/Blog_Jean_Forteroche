@@ -1,12 +1,15 @@
 <?php $title = 'Chapitre ' . $chapter['id'] . ' - ' . $chapter['title']; ?>
 
 <?php ob_start(); ?>
+<!-- BOUTON HOME -->
 <header>
 	<div class="fixed-action-btn buttonHome">
 		<a href="index.php?action=home" class="button"><i class="medium material-icons black-text">home</i></a>
 	</div>
 </header>
+<!-- FIN -->
 
+<!-- AFFICHAGE DU CHAPITRE -->
 <section class="paragraph">
 	<div class="container text">
 		<h2><?= $chapter['title']; ?></h2>
@@ -14,9 +17,12 @@
 		<p><?= $chapter['content']; ?></p>
 	</div>
 </section>
+<!-- FIN -->
 
 <section id="sectionComments">
 	<div class="container comments">
+
+		<!-- BOUTON AJOUTER COMMENTAIRE -->
 		<div id="buttonComment">
 			<p>Laissez votre commentaire<a class=" btn-floating btn-large modal-trigger brown lighten-4 pulse" href="#modal1"><i class="material-icons black-text">edit</i></a></p>
 			
@@ -39,10 +45,12 @@
 					</form>
 	    		</div>
 	  		</div>
-		</div> 
+		</div>
+		<!-- FIN  -->
 
 		<h4 id="commentaires">Commentaires</h4>
-
+		
+		<!-- AFFICHAGE DES COMMENTAIRES -->
 		<?php
          while($data = $comments->fetch())
         {
@@ -58,6 +66,7 @@
         }
         $comments->closeCursor();
         ?>
+        <!-- FIN -->
 	</div>
 </section>
 

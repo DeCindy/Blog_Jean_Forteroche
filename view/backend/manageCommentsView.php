@@ -8,6 +8,7 @@
 </header>
 
 <section>
+	<!-- AFFICHAGE TABLEAU SI COMMENTAIRE SIGNALE -->
 	<?php
 	if(!empty($test))
 	{
@@ -55,7 +56,9 @@
 	<?php
 	}
 	?>
+	<!-- FIN -->
 
+	<!-- TABLEAU COMMENTAIRE -->
 	<div class="container">
 	    <table class="striped centered">
 	        <thead>
@@ -93,6 +96,7 @@
 	    	</tbody>
 	    </table>
 	</div>
+	<!-- FIN -->
 </section>
 
 <?php $content = ob_get_clean(); ?>

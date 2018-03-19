@@ -9,9 +9,14 @@
 
 <section>
 	<div class="container">
+
+		<!-- BOUTON POUR CREER UN NOUVEAU CHAPITRE -->
 		<a class="waves-effect waves-light btn blue" href="index.php?action=writeChapter" id="buttonWriteChapter"><i class="material-icons left">create</i>Créer un nouveau chapitre</a>
+		<!-- FIN -->
 
 	    <table class="striped centered">
+
+	    	<!-- ENTETE DU TABLEAU CHAPITRE -->
 	        <thead>
 	          	<tr>
 	                <th>Numéro</th>
@@ -20,14 +25,14 @@
 	                <th>Action</th>
 	            </tr>
 	        </thead>
-
+			<!-- FIN -->
 			<tbody>
 
 			<?php
             while($data = $chapters->fetch())
             {
             ?>
-
+				<!-- LIGNE DU TABLEAU CHAPITRE-->
 	          	<tr>
 		            <td><?= $data['id']; ?></td>
 		            <td><?= '<strong>' . $data['title'] . '</strong>'; ?></td>
@@ -37,7 +42,7 @@
 	            		<p><a href="index.php?action=validateDelete&amp;id=<?=$data['id']?>&amp;title=<?=$data['title']?>"><i class="material-icons">delete_forever</i>supprimer</a></p>
 	            	</td>
 	          	</tr>
-
+				<!-- FIN -->
 	        <?php
             }
             $chapters->closeCursor();

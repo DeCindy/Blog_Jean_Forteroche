@@ -2,7 +2,9 @@
 <html>
     <head>
         <meta charset="utf-8" />
+
         <title>Administration - Connectez-vous</title>
+
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
         <link rel="stylesheet" href="public/css/backend/style.css">
@@ -29,28 +31,36 @@
                                 </div>
 
                                 <div class='row'>
+                                    <!-- SECTION EMAIL UTILISATEUR -->
                                     <div class='input-field col s12'>
                                         <input class='validate' type='email' name='email' id='email' />
                                         <label for='email'>Entrez votre email</label>
                                     </div>
+                                    <!-- FIN -->
                                 </div>
 
                                 <div class='row'>
+                                    <!-- SECTION MOT DE PASSE UTILISATEUR -->
                                     <div class='input-field col s12'>
                                         <input class='validate' type='password' name='pwd' id='password' />
                                         <label for='password'>Entrez votre mot de passe</label>
                                     </div>
-
+                                    <!-- FIN -->
+                                    
+                                    <!-- BOUTON RETOUR PAGE ACCUEIL -->
                                     <label style='float: right;'>
                                         <p class="center"><a href="index.php?action=home" class="black-text"><i class="small material-icons black-text">home</i><br/><strong>Retour à la page d'accueil </strong></a></p>
                                     </label>
+                                    <!-- FIN -->
                                 </div>
 
                                 <br />
                                 <center>
+                                    <!-- BOUTON SUBMIT -->
                                     <div class='row'>
                                         <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Valider</button>
                                     </div>
+                                    <!-- FIN -->
                                 </center>
                             </form>
                         </div>
