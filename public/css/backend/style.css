@@ -51,3 +51,8 @@ td{
 #report, h4, #buttonWriteChapter {
     margin-bottom: 50px;
 }
+
+#report td {
+    border-top:1px solid red;
+    border-bottom:1px solid red;
+}
