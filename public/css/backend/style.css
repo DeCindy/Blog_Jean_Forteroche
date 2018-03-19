@@ -47,3 +47,7 @@ td{
 .validation {
     text-align: center;
 }
+
+#report, h4, #buttonWriteChapter {
+    margin-bottom: 50px;
+}

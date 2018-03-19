@@ -3,13 +3,13 @@
 <?php ob_start(); ?>
 
 <header>
-	<h4 class="center">Gérer les chapitres</h4>
+	<h4 class="center blue-text">Gérer les chapitres</h4>
 
 </header>
 
 <section>
 	<div class="container">
-		<a class="waves-effect waves-light btn blue" href="index.php?action=writeChapter"><i class="material-icons left">create</i>Créer un nouveau chapitre</a>
+		<a class="waves-effect waves-light btn blue" href="index.php?action=writeChapter" id="buttonWriteChapter"><i class="material-icons left">create</i>Créer un nouveau chapitre</a>
 
 	    <table class="striped centered">
 	        <thead>

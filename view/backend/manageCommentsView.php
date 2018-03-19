@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 <header>
-	<h4 class="center">Gérer les commentaires</h4>
+	<h4 class="center blue-text">Gérer les commentaires</h4>
 
 </header>
 
@@ -12,7 +12,7 @@
 	if(!empty($test))
 	{
 	?>
-	<div class="container">
+	<div class="container" id="report">
 	    <table class="bordered centered">
 	        <thead>
 	        	<tr>

@@ -25,7 +25,7 @@
 	      			<form action="index.php?action=addComment&amp;id=<?= $_GET['id'] ?>&amp;idmax=<?=$_GET['idmax']?>" method="post">
 			      		<div class="input-field col l6">
 			      			<i class="material-icons prefix">account_circle</i>
-			      			<input id="author" name="author" type="text" class="validate">
+			      			<input id="author" name="author" type="text" class="validate" maxlength="30">
 			      			<label for="author">Nom</label>
 			      		</div>
 			      		<div class="input-field col l6">

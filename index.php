@@ -29,7 +29,14 @@ try
 			{
 				if (!empty($_POST['author']) && !empty($_POST['comment']))
 				{
-					addComment($_GET['id'], $_GET['idmax'], $_POST['author'], $_POST['comment']);
+					if(strlen($_POST['comment']) < 500)
+					{
+						addComment($_GET['id'], $_GET['idmax'], htmlspecialchars($_POST['author']), nl2br(htmlspecialchars($_POST['comment'])));
+					}
+					else
+					{
+						throw new Exception(' votre commentaire ne doit pas dépasser 500 caractères !');
+					}
 				}
 				else
 				{
