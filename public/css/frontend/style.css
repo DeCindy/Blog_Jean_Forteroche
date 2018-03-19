@@ -154,14 +154,18 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
   	color: #d7ccc8;
 }
 
-/*/// MEDIA QUERIES ecran - 1020px \\\*/
 
-@media all and (max-width: 1020px) {
+/*/// MEDIA QUERIES ecran - 1500px \\\*/
+
+@media all and (max-width: 1500px) {
 	body {
 		background-image: none;
 		background-color: #efebe9;
 	}
 
+/*/// MEDIA QUERIES ecran - 1020px \\\*/
+
+@media all and (max-width: 1020px) {
 	#buttonComment {
 		margin-bottom: 80px;
 	}
@@ -186,6 +190,7 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 	.text, .comments{
 		padding: 10px 20px 40px 20px;
 	}
+
 	#buttonComment {
 		margin-bottom: 100px;
 	}
