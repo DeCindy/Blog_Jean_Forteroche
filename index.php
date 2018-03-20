@@ -16,7 +16,7 @@ try
 		{
 			if(isset($_GET['id']) && $_GET['id'] > 0 && $_GET['id'] <= $_GET['idmax'])
 			{
-				chapterView();
+				chapterView($_GET['id']);
 			}
 			else
 			{

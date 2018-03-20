@@ -155,13 +155,14 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 }
 
 
-/*/// MEDIA QUERIES ecran - 1500px \\\*/
+/*/// MEDIA QUERIES ecran - 1580px \\\*/
 
-@media all and (max-width: 1500px) {
+@media all and (max-width: 1580px) {
 	body {
 		background-image: none;
 		background-color: #efebe9;
 	}
+}
 
 /*/// MEDIA QUERIES ecran - 1020px \\\*/
 
