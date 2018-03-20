@@ -12,13 +12,13 @@ function home()
 	require('view/frontend/home.php');
 }
 
-function chapterView($chapterId)
+function chapterView()
 {
 	$chapterManager = new Blog\Model\ChapterManager();
-	$chapter = $chapterManager->getChapter($chapterId);
+	$chapter = $chapterManager->getChapter($_GET['id']);
 
 	$commentManager = new Blog\Model\CommentManager();
-	$comments = $commentManager->getComments($chapterId);
+	$comments = $commentManager->getComments($_GET['id']);
 
 	require('view/frontend/chapterView.php');
 }
