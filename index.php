@@ -67,7 +67,7 @@ try
 		{
 			if (!empty($_POST['email']) && !empty($_POST['pwd']))
 				{
-					controlLogin($_POST['email'], $_POST['pwd']);
+					controlLogin($_POST['email'], sha1($_POST['pwd']));
 				}
 				else
 				{
