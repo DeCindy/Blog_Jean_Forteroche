@@ -59,7 +59,21 @@
 		<div class="userComment hoverable">
 			<p><strong><?= $data['author']; ?></strong></p><span class="dateComment">Le <?= $data['comment_date_fr']; ?></span>
 			<p><?= $data['comment']; ?></p>
+
+			<?php
+			if ($data['report'] === "OUI")
+			{
+			?>
+			<p class="warning">Ce commentaire est en cours de modération</p>
+			<?php
+			}
+			else
+			{
+			?>
 			<a href="index.php?action=reportComment&amp;id=<?= $data['id'] ?>&amp;idchapter=<?= $data['chapter_id'] ?>&amp;idmax=<?= $_GET['idmax'] ?>" class="warning" onclick="return confirm('Confirmer le signalement ?');">Signaler ce contenu <i class="tiny material-icons red-text">warning</i></a>
+			<?php
+			}
+			?>
 		</div>
 
 		<?php
