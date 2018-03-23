@@ -45,7 +45,7 @@ class CommentManager extends Manager
     public function chapterComment($postId, $author, $comment)
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO comments(chapter_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
+        $comments = $db->prepare('INSERT INTO comments(chapter_id, author, comment, comment_date, report) VALUES(?, ?, ?, NOW(),0)');
         $affectedLines = $comments->execute(array($postId, $author, $comment));
 
         return $affectedLines;
@@ -63,7 +63,7 @@ class CommentManager extends Manager
     public function updateComment($idComment, $comment)
     {
         $db = $this->dbConnect();
-        $update = $db->prepare('UPDATE `comments` SET `comment`=?, `report`="" WHERE id=?');
+        $update = $db->prepare('UPDATE `comments` SET `comment`=?, `report`=0 WHERE id=?');
         $update->execute(array($comment, $idComment));
 
         return $update;
@@ -72,7 +72,7 @@ class CommentManager extends Manager
     public function reportComment($idComment)
     {
         $db = $this->dbConnect();
-        $report = $db->prepare('UPDATE `comments` SET `report`="OUI" WHERE id=?');
+        $report = $db->prepare('UPDATE `comments` SET `report`=1 WHERE id=?');
         $report->execute(array($idComment));
 
         return $report;
@@ -81,7 +81,7 @@ class CommentManager extends Manager
     public function testReport()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT * FROM `comments` WHERE `report`="OUI"');
+        $req = $db->query('SELECT * FROM `comments` WHERE `report`=1');
         $req = $req->fetch();
 
         return $req;
@@ -90,7 +90,7 @@ class CommentManager extends Manager
     public function getReport()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT *, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr  FROM `comments` WHERE `report`="OUI" ORDER BY comment_date DESC');
+        $req = $db->query('SELECT *, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr  FROM `comments` WHERE `report`=1 ORDER BY comment_date DESC');
 
         return $req;
     }

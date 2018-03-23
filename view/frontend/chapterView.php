@@ -61,7 +61,7 @@
 			<p><?= $data['comment']; ?></p>
 
 			<?php
-			if ($data['report'] === "OUI")
+			if ($data['report'] === "1")
 			{
 			?>
 			<p class="warning">Ce commentaire est en cours de modération</p>

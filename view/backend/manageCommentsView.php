@@ -10,7 +10,7 @@
 <section>
 	<!-- AFFICHAGE TABLEAU SI COMMENTAIRE SIGNALE -->
 	<?php
-	if(!empty($test))
+	if($test)
 	{
 	?>
 	<div class="container" id="report">
