@@ -20,16 +20,9 @@
                 <ul class="right hide-on-med-and-down">
 
                     <!-- AJOUTE ICONE A NAV SI COMMENTAIRE SIGNALE -->
-                    <?php
-                    $commentManager = new Blog\Model\CommentManager();
-                    $test = $commentManager->testReport();
-                    if(!empty($test))
-                    {
-                    ?>
+                    <?php $commentManager = new Blog\Model\CommentManager(); $test = $commentManager->testReport(); if(!empty($test)):?>
                         <li><a href="index.php?action=manageComments"><i class="material-icons red-text">warning</i></a></li>
-                    <?php
-                    }
-                    ?>
+                    <?php endif ?>
                     <!-- FIN -->
                     <li><a href="index.php?action=adminView">Accueil</a></li>
                     <li><a href="index.php?action=editChapter">Gérer les chapitres</a></li>
@@ -39,16 +32,9 @@
 
                 <!-- RESPONSIVE NAV -->
                 <ul class="side-nav" id="mobile-demo">
-                  <?php
-                    $commentManager = new Blog\Model\CommentManager();
-                    $test = $commentManager->testReport();
-                    if(!empty($test))
-                    {
-                    ?>
+                  <?php $commentManager = new Blog\Model\CommentManager(); $test = $commentManager->testReport(); if(!empty($test)):?>
                         <li><a href="index.php?action=manageComments"><i class="material-icons red-text">warning</i></a></li>
-                    <?php
-                    }
-                    ?>
+                    <?php endif ?>
                     <li><a href="index.php?action=adminView">Accueil</a></li>
                     <li><a href="index.php?action=editChapter">Creer un nouveau chapitre</a></li>
                     <li><a href="index.php?action=manageComments">Gérer les commentaires</a></li>
@@ -56,15 +42,15 @@
                 </ul>
                 <!-- FIN -->
             </div>
-      </nav>
+        </nav>
 
 		  <?= $content ?>
 
     	<script src="https://code.jquery.com/jquery-1.12.3.js"   integrity="sha256-1XMpEtA4eKXNNpXcJ1pmMPs8JV+nwLdEqwiJeCQEkyc="   crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-      <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-      <script>tinymce.init({ selector:'textarea' });</script>
-      <script src="public/js/init.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+        <script>tinymce.init({ selector:'textarea' });</script>
+        <script src="public/js/init.js"></script>
         
     </body>
 </html>

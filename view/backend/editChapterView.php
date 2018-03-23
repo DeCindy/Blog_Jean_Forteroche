@@ -28,10 +28,7 @@
 			<!-- FIN -->
 			<tbody>
 
-			<?php
-            while($data = $chapters->fetch())
-            {
-            ?>
+			<?php while($data = $chapters->fetch()):?>
 				<!-- LIGNE DU TABLEAU CHAPITRE-->
 	          	<tr>
 		            <td><?= $data['id']; ?></td>
@@ -43,10 +40,8 @@
 	            	</td>
 	          	</tr>
 				<!-- FIN -->
-	        <?php
-            }
-            $chapters->closeCursor();
-            ?>
+			<?php endwhile;?>
+	        <?php $chapters->closeCursor();?>
 
 	        </tbody>
 	    </table>

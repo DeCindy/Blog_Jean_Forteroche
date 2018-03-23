@@ -9,10 +9,7 @@
 
 <section>
 	<!-- AFFICHAGE TABLEAU SI COMMENTAIRE SIGNALE -->
-	<?php
-	if($test)
-	{
-	?>
+	<?php if($test):?>
 	<div class="container" id="report">
 	    <table class="bordered centered">
 	        <thead>
@@ -28,10 +25,7 @@
 
 	        <tbody>
 	        
-	        <?php
-            while($data = $report->fetch())
-            {
-            ?>
+	        <?php while($data = $report->fetch()):?>
 	        	<tr>
 		          	<td><br/><i class="material-icons red-text">warning</i><br/></td>
 		            <td><strong><?= $data['chapter_id']; ?></strong></td>
@@ -43,19 +37,13 @@
 		            	<p><a href="index.php?action=validateDelete&amp;id=<?=$data['id']?>&amp;auteur=<?=$data['author'] ?>&amp;chapitre=<?=$data['chapter_id'] ?>"><i class="material-icons">delete_forever</i><br/>supprimer</a></p>
 		            </td>
 	          	</tr>
-
-	        <?php
-            }
-            $report->closeCursor();
-            ?>
+			<?php endwhile;?>
+	        <?php $report->closeCursor();?>
 
 	    	</tbody>
 	    </table>
 	</div>
-
-	<?php
-	}
-	?>
+	<?php endif ?>
 	<!-- FIN -->
 
 	<!-- TABLEAU COMMENTAIRE -->
@@ -73,10 +61,7 @@
 
 	        <tbody>
 	        
-	        <?php
-            while($data = $comments->fetch())
-            {
-            ?>
+	        <?php while($data = $comments->fetch()):?>
 	        	<tr>
 		            <td><strong><?= $data['chapter_id']; ?></strong></td>
 		            <td><?= $data['author']; ?></td>
@@ -87,11 +72,8 @@
 		            	<p><a href="index.php?action=validateDelete&amp;id=<?=$data['id']?>&amp;auteur=<?=$data['author'] ?>&amp;chapitre=<?=$data['chapter_id'] ?>"><i class="material-icons">delete_forever</i><br/>supprimer</a></p>
 		            </td>
 	          	</tr>
-
-	        <?php
-            }
-            $comments->closeCursor();
-            ?>
+			<?php endwhile;?>
+	        <?php $comments->closeCursor();?>
 
 	    	</tbody>
 	    </table>

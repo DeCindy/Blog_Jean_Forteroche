@@ -33,27 +33,15 @@
 
 <section class="container">
         <ul class="collapsible" data-collapsible="accordion">
-            <?php
-            while($data = $chapters->fetch())
-            {
-            ?>
+            <?php while($data = $chapters->fetch()):?>
             <li class="hoverable">
 
                 <!-- AJOUTE "ACTIVE" A LA CLASSE DU DERNIER CHAPITRE POUR ETRE OUVERT SUR CE CHAPITRE-->
-                <?php
-                if($data['id'] == $maxId['id_max'])
-                {
-                ?>
+                <?php if($data['id'] == $maxId['id_max']):?>
                 <div class="collapsible-header active">
-                <?php
-                }
-                else
-                {
-                ?>
+                <?php else:?>
                 <div class="collapsible-header">
-                <?php
-                }
-                ?>
+                <?php endif ?>
                 <!-- FIN -->
 
                     <!-- ENTETE DU DESCRIPTIF DU CHAPITRE -->
@@ -61,10 +49,7 @@
                     <a class="black-text" href="index.php?action=chapterView&amp;id=<?=$data['id']?>&amp;idmax=<?=$maxId['id_max']?>&amp;#commentaires">
 
                     <!-- PERMET L'AFFICHAGE DU NOMBRE DE COMMENTAIRES -->
-                    <?php
-                    $commentManager = new Blog\Model\CommentManager();
-                    $maxComments = $commentManager->getMaxComment($data['id']);
-                    ?>
+                    <?php $commentManager = new Blog\Model\CommentManager(); $maxComments = $commentManager->getMaxComment($data['id']);?>
                     <span class="nbrComment"><?= $maxComments['nbr_id']; ?> commentaire(s)<i class="material-icons">chat_bubble_outline</i></span></a>
                     <!-- FIN -->
                 </div>
@@ -78,11 +63,9 @@
                 </div>
                 <!-- FIN -->
             </li>
+            <?php endwhile;?>
+            <?php $chapters->closeCursor();?>
 
-            <?php
-            }
-            $chapters->closeCursor();
-            ?>
         </ul>
 </section>
 
