@@ -201,8 +201,5 @@ try
 }
 catch(Exception $e) 
 {
-	echo 'Erreur :' . $e->getMessage();
-	echo '<br/>Vous allez être redirigé dans 5 secondes';
-	echo '<META HTTP-EQUIV="Refresh" CONTENT="5;index.php?action=home">';
-
+	error($e);
 }

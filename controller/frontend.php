@@ -45,3 +45,10 @@ function reportComment($idComment, $idChapter, $idMax)
 
 	header('location: index.php?action=chapterView&id=' . $idChapter . '&idmax=' . $idMax);
 }
+
+function error($e)
+{
+	$messageError = $e->getMessage();
+	
+	require ('view/frontend/errorView.php');
+}
