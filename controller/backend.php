@@ -2,151 +2,187 @@
 
 require_once('model/CommentManager.php');
 require_once('model/ChapterManager.php');
-require_once('model/LoginManager.php');
 
-function loginView()
+class Backend 
 {
-	require('view/backend/loginView.php');
-}
-
-function adminView()
-{
-	require('view/backend/adminView.php');
-}
-
-function writeChapter()
-{
-	require('view/backend/writeView.php');
-}
-
-function validateDelete()
-{
-	require('view/backend/validateDeleteView.php');
-}
-
-function controlLogin($emailUser, $pwdUser)
-{
-	$loginManager = new Blog\Model\LoginManager();
-	$login = $loginManager->getLogin($emailUser, $pwdUser);
-
-	if (!empty($login)) 
+	public function adminView()
 	{
-		session_start();
-		$_SESSION['login'] = $login['id'];
-		header('location: index.php?action=adminView');
+		require('view/backend/adminView.php');
 	}
-	else
+
+	public function writeChapter()
 	{
-		throw new Exception(' membre non reconnu');
+		require('view/backend/writeView.php');
 	}
-}
 
-function editChapter()
-{
-	$chapterManager = new Blog\Model\ChapterManager();
-	$chapters = $chapterManager->getChapters();
-
-	require('view/backend/editChapterView.php');
-}
-
-function addChapter($content, $title)
-{
-	$chapterManager = new Blog\Model\ChapterManager();
-	$affectedLines = $chapterManager->addChapter($content, $title);
-
-	if ($affectedLines === false) 
+	public function validateDelete()
 	{
-		throw new Exception(' impossible d\'ajouter le chapitre !');
+		if (isset($_GET['id']))
+		{
+			require('view/backend/validateDeleteView.php');
+		}
+		else
+		{
+			throw new Exception(' aucun identifiant de billet envoyé');
+		}
 	}
-	else
+
+	public function editChapter()
 	{
-		header('location: index.php?action=editChapter');
+		$chapterManager = new Blog\Model\ChapterManager();
+		$chapters = $chapterManager->getChapters();
+
+		require('view/backend/editChapterView.php');
 	}
-}
 
-function deleteChapter($idChapter)
-{
-	$chapterManager = new Blog\Model\ChapterManager();
-	$delete = $chapterManager->deleteChapter($idChapter);
-
-	if ($delete === false) 
+	public function addChapter()
 	{
-		throw new Exception(' impossible d\'effacer le chapitre !');
+		if (!empty($_POST['content']) && !empty($_POST['title']))
+		{
+			$chapterManager = new Blog\Model\ChapterManager();
+			$affectedLines = $chapterManager->addChapter($_POST['content'], $_POST['title']);
+
+			if ($affectedLines === false) 
+			{
+				throw new Exception(' impossible d\'ajouter le chapitre !');
+			}
+			else
+			{
+				header('location: index.php?action=editChapter');
+			}
+		}
+		else
+		{
+			throw new Exception(' tous les champs ne sont pas remplis !');
+		}
 	}
-	else
+
+	public function deleteChapter()
 	{
-		header('location: index.php?action=editChapter');
+		if (isset($_GET['id']))
+		{
+			$chapterManager = new Blog\Model\ChapterManager();
+			$delete = $chapterManager->deleteChapter($_GET['id']);
+
+			if ($delete === false) 
+			{
+				throw new Exception(' impossible d\'effacer le chapitre !');
+			}
+			else
+			{
+				header('location: index.php?action=editChapter');
+			}
+		}
+		else
+		{
+			throw new Exception(' aucun identifiant de billet envoyé');
+		}
 	}
-}
 
-function changeChapter($idChapter)
-{
-	$chapterManager = new Blog\Model\ChapterManager();
-	$chapter = $chapterManager->getChapter($idChapter);
-
-	require('view/backend/writeView.php');
-}
-
-function updateChapter($idChapter, $contentChapter, $titleChapter)
-{
-	$chapterManager = new Blog\Model\ChapterManager();
-	$update = $chapterManager->updateChapter($idChapter, $contentChapter, $titleChapter);
-
-	if ($update === false) 
+	public function changeChapter()
 	{
-		throw new Exception(' impossible de modifier le chapitre !');
+		if (isset($_GET['id']))
+		{
+			$chapterManager = new Blog\Model\ChapterManager();
+			$chapter = $chapterManager->getChapter($_GET['id']);
+
+			require('view/backend/writeView.php');
+		}
+		else
+		{
+			throw new Exception(' aucun identifiant de billet envoyé');
+		}
 	}
-	else
+
+	public function updateChapter()
 	{
-		header('location: index.php?action=editChapter');
+		if (isset($_GET['id']) && !empty($_POST['content']) && !empty($_POST['title']))
+		{
+			$chapterManager = new Blog\Model\ChapterManager();
+			$update = $chapterManager->updateChapter($_GET['id'], $_POST['content'], $_POST['title']);
+
+			if ($update === false) 
+			{
+				throw new Exception(' impossible de modifier le chapitre !');
+			}
+			else
+			{
+				header('location: index.php?action=editChapter');
+			}
+		}
+		else
+		{
+			throw new Exception(' tous les champs ne sont pas remplis !');
+		}
 	}
-}
 
-function manageComments()
-{
-	$commentManager = new Blog\Model\CommentManager();
-	$comments = $commentManager->getAllComments();
-
-	$test = $commentManager->testReport();
-	$report = $commentManager->getReport();
-
-	require('view/backend/manageCommentsView.php');
-}
-
-function deleteComment($idComment)
-{
-	$commentManager = new Blog\Model\CommentManager();
-	$delete = $commentManager->deleteComment($idComment);
-
-	if ($delete === false) 
+	public function manageComments()
 	{
-		throw new Exception(' impossible d\'effacer le commentaire !');
+		$commentManager = new Blog\Model\CommentManager();
+		$comments = $commentManager->getAllComments();
+
+		$test = $commentManager->testReport();
+		$report = $commentManager->getReport();
+
+		require('view/backend/manageCommentsView.php');
 	}
-	else
+
+	public function deleteComment()
 	{
-		header('location: index.php?action=manageComments');
+		if (isset($_GET['id']))
+		{
+			$commentManager = new Blog\Model\CommentManager();
+			$delete = $commentManager->deleteComment($_GET['id']);
+
+			if ($delete === false) 
+			{
+				throw new Exception(' impossible d\'effacer le commentaire !');
+			}
+			else
+			{
+				header('location: index.php?action=manageComments');
+			}
+		}
+		else
+		{
+			throw new Exception(' aucun identifiant de billet envoyé');
+		}
 	}
-}
 
-function changeComment($idComment)
-{
-	$commentManager = new Blog\Model\CommentManager();
-	$comment = $commentManager->getComment($idComment);
-
-	require('view/backend/writeView.php');
-}
-
-function updateComment($idComment, $comment)
-{
-	$commentManager = new Blog\Model\CommentManager();
-	$update = $commentManager->updateComment($idComment, $comment);
-
-	if ($update === false) 
+	public function changeComment()
 	{
-		throw new Exception(' impossible de modifier le chapitre !');
+		if (isset($_GET['id']))
+		{
+			$commentManager = new Blog\Model\CommentManager();
+			$comment = $commentManager->getComment($_GET['id']);
+
+			require('view/backend/writeView.php');
+		}
+		else
+		{
+			throw new Exception(' aucun identifiant de billet envoyé');
+		}
 	}
-	else
+
+	public function updateComment()
 	{
-		header('location: index.php?action=manageComments');
+		if (isset($_GET['id']) && !empty($_POST['comment']))
+		{
+			$commentManager = new Blog\Model\CommentManager();
+			$update = $commentManager->updateComment($_GET['id'], $_POST['comment']);
+
+			if ($update === false) 
+			{
+				throw new Exception(' impossible de modifier le chapitre !');
+			}
+			else
+			{
+				header('location: index.php?action=manageComments');
+			}
+		}
+		else
+		{
+			throw new Exception(' tous les champs ne sont pas remplis !');
+		}
 	}
 }
